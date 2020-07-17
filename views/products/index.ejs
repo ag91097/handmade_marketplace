@@ -1,0 +1,60 @@
+<%- include("../partials/header") %>
+
+<!-- <% if(currentUser && currentUser.isAdmin){ %>
+    <h1>You are an admin</h1>
+<% } %> -->
+ 
+<div class = "container">
+    <header class="jumbotron">
+        <h1>Welcome To MarketPlace|</h1>
+        <p>Explore amazing products from all over the world</p>
+
+        <p>
+            <a class="btn btn-info btn-lg" href="/products/new">Add New Product</a>
+        </p>
+        <p>
+            <!-- FORM FOR SEARCH CAMP -->
+            <form action="/products" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Product search.." class="form-control">
+                    <input type="submit" value="Search" class="btn btn-secondary">
+                </div>
+            </form>
+        </p>
+    </header>
+
+
+    <div class="row text-center" >
+        <% products.forEach(function(product){ %>
+            <div class="col-md-3 col-sm-6" style="padding-bottom: 15px;" >
+                <div class="card">
+                    <div class="card-block">
+                        <div class="inner">
+                            <img src="<%= product.image%>" class="img-fluid">
+                        </div>
+                        <!-- <div class="caption"> -->
+                            <div class="card-title">
+                                <h5><%= product.name%></h5>
+                                <% if (product.rating === 0) { %>
+                                    <em>No reviews yet.</em>
+                                    <% } else { %>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star <% if (product.rating > 1.5) { %> checked <% } %>"></span>
+                                    <span class="fa fa-star <% if (product.rating > 2.5) { %> checked <% } %>"></span>
+                                    <span class="fa fa-star <% if (product.rating > 3.5) { %> checked <% } %>"></span>
+                                    <span class="fa fa-star <% if (product.rating > 4.5) { %> checked <% } %>"></span>
+                                <% } %>
+                            </div>
+                            <p>
+                                <a href="/products/<%= product._id%>" class="btn btn-info">More Info</a>
+                            </p>
+                    </div> 
+                </div>
+                
+            </div>
+        <% }); %>
+    </div>
+    
+</div>
+
+<%- include("../partials/footer") %>

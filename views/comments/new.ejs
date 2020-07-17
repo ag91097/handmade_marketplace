@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+        <h1 style="text-align: center; margin-top: 25px">Add New Comment to <%= product.name%></h1>
+        <div style="margin: 25px auto;" class="col-xs-12 col-md-6 col-lg-4">
+            <form action="/products/<%= product._id %>/comments" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="comment[text]" placeholder="Text">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-info btn-block">SUBMIT</button>
+                </div>
+            </form>
+            <a href="/products/<%= product._id %>">GO BACK</a>
+        </div>
+</div>
+
+<%- include("../partials/footer") %>
